@@ -67,8 +67,15 @@ typedef void (*VectorFreeFunction)(void *elemAddr);
  * vector using those functions defined in this file.
  */
 
-typedef struct {
-  // to be filled in by you
+typedef struct{
+  int allocLen;
+  int logLen;
+
+  void* base;
+  int elemSize;
+  
+  void (*freeFunc)(void *);
+
 } vector;
 
 /** 
@@ -265,5 +272,7 @@ void VectorSort(vector *v, VectorCompareFunction comparefn);
  */
 
 void VectorMap(vector *v, VectorMapFunction mapfn, void *auxData);
+
+void doubleSize();
 
 #endif
